@@ -13,8 +13,11 @@
 	<!-- Bootstrap core CSS -->
 	<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-	<!-- Custom styles for this template -->
-	<link href="css/signin.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="css/shop-homepage.css" rel="stylesheet">
+
+	<!-- Original CSS -->
+    <link href="css/common.css" rel="stylesheet">
 </head>
 
 <body>
@@ -26,15 +29,59 @@
 		</div>
 	</nav>
 
+	<div class="formdata">
+	<form>
+		<h1 class="h3 mb-3 font-weight-normal">アカウントを作成</h1>
 
-	<form class="form-signin text-center">
-		<h1 class="h3 mb-3 font-weight-normal">新規登録</h1>
-		<input type="text" id="input_name" class="form-control" placeholder="名前" required autofocus>
-		<input type="text" id="input_address" class="form-control" placeholder="住所" required autofocus>
-		<input type="text" id="input_loginid" class="form-control" placeholder="ログインID" required autofocus>
-		<input type="password" id="input_password" class="form-control" placeholder="パスワード" required>
-		<input type="password" id="input_password_confirmation" class="form-control" placeholder="パスワード確認" required>
-		<button class="btn btn-lg btn-primary btn-block" type="submit">登録</button>
+		<div class="form-group row">
+			<label for="name" class="col-sm-3 col-form-label">名前</label>
+			<div class="col-sm-9">
+				<input type="text" id="name" class="form-control" required autofocus>
+			</div>
+		</div>
+
+		<div class="form-group row">
+			<label for="postCode" class="col-sm-3 col-form-label">郵便番号</label>
+			<div class="col-sm-9 text-left">
+			<input type="text" id="postCode" maxlength="8" onKeyUp="AjaxZip3.zip2addr(this,'','addr11','addr11');">
+			</div>
+		</div>
+
+		<div class="form-group row">
+			<label for="address" class="col-sm-3 col-form-label">住所</label>
+			<div class="col-sm-9">
+				<input type="text" name="addr11" id="address" class="form-control" required>
+			</div>
+		</div>
+
+		<div class="form-group row">
+			<label for="inputLoginId" class="col-sm-3 col-form-label">ログインID</label>
+			<div class="col-sm-9">
+				<input type="text" id="loginId" class="form-control" required>
+			</div>
+		</div>
+
+		<div class="form-group row">
+			<label for="inputPassword" class="col-sm-3 col-form-label">パスワード</label>
+			<div class="col-sm-9">
+				<input type="password" id="password" class="form-control" required>
+			</div>
+		</div>
+
+		<div class="form-group row">
+			<label for="inputPassword" class="col-sm-3 col-form-label">パスワード <br>（確認）</label>
+			<div class="col-sm-9">
+				<input type="password" id="password" class="form-control" required>
+			</div>
+		</div>
+
+		<button class="btn btn-lg btn-primary btn-block" type="submit">アカウントを作成</button>
+		<hr>
+		<a href="index.html" >戻る</a>
+
 	</form>
+	</div>
+
+	<script src="https://ajaxzip3.github.io/ajaxzip3.js" charset="UTF-8"></script>
 </body>
 </html>
