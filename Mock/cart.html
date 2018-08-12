@@ -57,7 +57,7 @@
 			<div class="col-lg-9">
 				<table class="table">
 					<thead>
-						<tr>
+						<tr class="text-center">
 							<th scope="col">商品名</th>
 							<th scope="col">価格</th>
 							<th scope="col">数量</th>
@@ -66,23 +66,23 @@
 					</thead>
 					<!-- 表示テスト用 -->
 					<tbody>
-						<tr>
+						<tr class="text-center">
 							<td>Echo Dot</td>
 							<td>5980円</td>
 							<td>1個</td>
 							<td><input type="checkbox" name="delete"></td>
 						</tr>
-						<tr>
+						<tr class="text-center">
 							<td>Fire TV</td>
 							<td>8980円</td>
 							<td>1個</td>
 							<td><input type="checkbox" name="delete"></td>
 						</tr>
-						<tr>
+						<tr class="text-center">
 							<td></td>
 							<td></td>
 							<td></td>
-							<td><b>合計：14960円</b></td>
+							<td><button type="button" class="btn btn-secondary">更新</button></td>
 						</tr>
 					</tbody>
 
@@ -92,8 +92,12 @@
 			<div class="col-lg-3">
 				<div class="card text-center">
 					<div class="card-body">
-						<h5 class="card-title">合計：14960円</h5>
-						<input class="btn btn-primary" type="submit" value="レジに進む">
+						<h5 class="card-title">商品の小計：14960円</h5>
+						<select class="custom-select my-3">
+							<option value="1">通常配送 0円</option>
+							<option value="2">お急ぎ便 500円</option>
+						</select>
+						<input class="btn btn-primary my-4" type="submit" value="レジに進む">
 					</div>
 				</div>
 
