@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Administrator</title>
+
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/shop-homepage.css" rel="stylesheet">
+
+    <!-- Custom styles Footer CSS -->
+    <link href="css/footer.css" rel="stylesheet">
+</head>
+
+<body>
+
+	<!-- Navigation -->
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <div class="container">
+        <a class="navbar-brand Bold text" href="index.html">Shop Name</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+			<div class="collapse navbar-collapse" id="navbarResponsive">
+				<ul class="navbar-nav ml-auto">
+
+					<!-- 管理画面はadminアカウントでサインインしている時だけ表示 -->
+					<li class="nav-item"><a class="nav-link" href="administrator.html">管理画面</a></li>
+					<li class="nav-item"><a class="nav-link" href="userdata.html">ユーザ名</a></li>
+					<li class="nav-item"><a class="nav-link" href="cart.html">カート</a></li>
+					<li class="nav-item">
+						<!-- サインイン時は「サインアウト」に表記が変わるようにする -->
+						<a class="nav-link" href="signin.html">サインイン</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+    </nav>
+
+	<!-- Page Content -->
+	<div class="container">
+		<div class="row mt-4">
+			<div class="col-2">
+				<div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+					<a class="nav-link active" id="v-pills-customer-tab" data-toggle="pill" href="#v-pills-customer" role="tab" aria-controls="v-pills-customer"aria-selected="true">顧客情報</a>
+					<a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">商品一覧</a>
+				</div>
+			</div>
+
+			<div class="col-10">
+				<div class="tab-content" id="v-pills-tabContent">
+					<div class="tab-pane fade show active" id="v-pills-customer"
+						role="tabpanel" aria-labelledby="v-pills-customer-tab">
+						<form>
+							<div class="form-row">
+								<div id="form-group col-lg-3">
+									<select class="custom-select">
+										<option selected>選択して下さい</option>
+										<option value="1">ログインID</option>
+										<option value="2">ユーザ名</option>
+									</select>
+								</div>
+								<div class="form-group col-lg-7">
+									<input type="text" id="searchWords" class="form-control">
+								</div>
+								<div class="col-lg-2">
+									<button class="btn btn-primary btn-block" type="submit">検索</button>
+								</div>
+							</div>
+						</form>
+
+						<table class="table">
+							<thead>
+								<tr>
+									<th scope="col">ログインID</th>
+									<th scope="col">ユーザ名</th>
+									<th scope="col">住所</th>
+									<th scope="col"></th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<th scope="row">tokyo</th>
+									<td>東京都庁</td>
+									<td>東京都新宿区西新宿２丁目８−１</td>
+									<td>
+										<div class="btn-group" role="group" aria-label="基本のボタングループ">
+											<a class="btn btn-primary" href="UserDetailServlet?id=${user.id}">詳細</a>
+                       <a class="btn btn-success" href="UserUpdateServlet?id=${user.id}">更新</a>
+                       <a class="btn btn-danger" href ="UserDeleteServlet?id=${user.id}">削除</a>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<th scope="row">2</th>
+									<td>Jacob</td>
+									<td>Thornton</td>
+									<td></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+
+					<div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+						<p>プロフィールの文章です。...</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- /.container -->
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <span class="text-white">Copyright &copy; Your Website 2017</span>
+      </div>
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  </body>
+
+</html>
