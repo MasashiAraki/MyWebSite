@@ -16,3 +16,7 @@ div.formdata button[type="submit"] {
 	width: 100%;
 	max-width: 280px;
 }
+
+.card-width {
+	min-width: 60%;
+}
