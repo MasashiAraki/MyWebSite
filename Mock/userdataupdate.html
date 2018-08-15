@@ -10,13 +10,16 @@
 
 	<title>User Data Update</title>
 
-	<!-- Bootstrap core CSS -->
-	<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link href="css/shop-homepage.css" rel="stylesheet">
 
-	<!-- Original CSS -->
+    <!-- Custom styles Footer CSS -->
+    <link href="css/footer.css" rel="stylesheet">
+
+   	<!-- Original CSS -->
     <link href="css/common.css" rel="stylesheet">
 </head>
 
@@ -29,59 +32,75 @@
 		</div>
 	</nav>
 
-	<div class="formdata">
-	<form>
-		<h1 class="h3 mb-3 font-weight-normal">ユーザ情報の変更</h1>
+	<!-- Page Content -->
+	<div class="container">
+		<div class="formdata">
+		<form>
+			<h1 class="h3 mb-3 font-weight-normal">ユーザ情報の変更</h1>
 
-		<div class="form-group row">
-			<label for="name" class="col-sm-3 col-form-label">名前</label>
-			<div class="col-sm-9">
-				<input type="text" id="name" class="form-control" placeholder="東京都庁" required autofocus>
+			<div class="form-group row">
+				<label for="name" class="col-sm-3 col-form-label">名前</label>
+				<div class="col-sm-9">
+					<input type="text" id="name" class="form-control" placeholder="東京都庁" required autofocus>
+				</div>
 			</div>
-		</div>
 
-		<div class="form-group row">
-			<label for="postCode" class="col-sm-3 col-form-label">郵便番号</label>
-			<div class="col-sm-9 text-left">
-			<input type="text" id="postCode" placeholder="1638001" maxlength="8" onKeyUp="AjaxZip3.zip2addr(this,'','addr11','addr11');">
+			<div class="form-group row">
+				<label for="postCode" class="col-sm-3 col-form-label">郵便番号</label>
+				<div class="col-sm-9 text-left">
+					<input type="text" id="postCode" placeholder="1638001" maxlength="8" onKeyUp="AjaxZip3.zip2addr(this,'','addr11','addr11');">
+				</div>
 			</div>
-		</div>
 
-		<div class="form-group row">
-			<label for="address" class="col-sm-3 col-form-label">住所</label>
-			<div class="col-sm-9">
-				<input type="text" name="addr11" id="address" class="form-control" placeholder="東京都新宿区西新宿２丁目８−１" required>
+			<div class="form-group row">
+				<label for="address" class="col-sm-3 col-form-label">住所</label>
+				<div class="col-sm-9">
+					<input type="text" name="addr11" id="address" class="form-control" placeholder="東京都新宿区西新宿２丁目８−１" required>
+				</div>
 			</div>
-		</div>
 
-		<div class="form-group row">
-			<label for="staticLoginId" class="col-sm-3 col-form-label">ログインID</label>
-			<div class="col-sm-9">
-				<input type="text" readonly id="loginId" class="form-control-plaintext" placeholder="tokyo">
+			<div class="form-group row">
+				<label for="staticLoginId" class="col-sm-3 col-form-label">ログインID</label>
+				<div class="col-sm-9">
+					<input type="text" readonly id="itemId" class="form-control-plaintext" placeholder="1">
+				</div>
 			</div>
-		</div>
 
-		<div class="form-group row">
-			<label for="inputPassword" class="col-sm-3 col-form-label">パスワード</label>
-			<div class="col-sm-9">
-				<input type="password" id="password" class="form-control" required>
+			<div class="form-group row">
+				<label for="inputPassword" class="col-sm-3 col-form-label">パスワード</label>
+				<div class="col-sm-9">
+					<input type="password" id="password" class="form-control" required>
+				</div>
 			</div>
-		</div>
 
-		<div class="form-group row">
-			<label for="inputPassword" class="col-sm-3 col-form-label">パスワード <br>（確認）</label>
-			<div class="col-sm-9">
-				<input type="password" id="password" class="form-control" required>
+			<div class="form-group row">
+				<label for="inputPassword" class="col-sm-3 col-form-label">パスワード <br>（確認）</label>
+				<div class="col-sm-9">
+					<input type="password" id="password" class="form-control" required>
+				</div>
 			</div>
+
+			<button class="btn btn-lg btn-success btn-block" type="submit">更新</button>
+			<hr>
+			<a href="administrator.html" >戻る</a>
+
+		</form>
 		</div>
-
-		<button class="btn btn-lg btn-primary btn-block" type="submit">更新</button>
-		<hr>
-		<a href="userdata.html" >戻る</a>
-
-	</form>
 	</div>
+	<!-- /.container -->
 
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <span class="text-white">Copyright &copy; Your Website 2017</span>
+      </div>
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+	<!-- Auto input address  https://github.com/ajaxzip3/ajaxzip3.github.io -->
 	<script src="https://ajaxzip3.github.io/ajaxzip3.js" charset="UTF-8"></script>
 </body>
 </html>

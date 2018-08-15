@@ -19,6 +19,9 @@
 
     <!-- Custom styles Footer CSS -->
     <link href="css/footer.css" rel="stylesheet">
+
+   	<!-- Original CSS -->
+    <link href="css/common.css" rel="stylesheet">
 </head>
 
 <body>
@@ -52,8 +55,10 @@
 			<div class="col-2">
 				<div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
 					<a class="nav-link active" id="v-pills-customer-tab" data-toggle="pill" href="#v-pills-customer" role="tab" aria-controls="v-pills-customer"aria-selected="true">顧客情報</a>
-					<a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">商品一覧</a>
+					<a class="nav-link" id="v-pills-item-tab" data-toggle="pill" href="#v-pills-item" role="tab" aria-controls="v-pills-item" aria-selected="false">商品一覧</a>
 				</div>
+				<hr>
+				<a class="btn btn-outline-primary" href="admin_additem.html" role="button">商品追加</a>
 			</div>
 
 			<div class="col-10">
@@ -64,7 +69,7 @@
 							<div class="form-row">
 								<div id="form-group col-lg-3">
 									<select class="custom-select">
-										<option selected>選択して下さい</option>
+										<option selected>検索カテゴリ</option>
 										<option value="1">ログインID</option>
 										<option value="2">ユーザ名</option>
 									</select>
@@ -89,35 +94,100 @@
 							</thead>
 							<tbody>
 								<tr>
-									<th scope="row">tokyo</th>
-									<td>東京都庁</td>
-									<td>東京都新宿区西新宿２丁目８−１</td>
+									<td scope="row" class="align-middle">tokyo</td>
+									<td class="align-middle">東京都庁</td>
+									<td class="align-middle">東京都新宿区西新宿２丁目８−１</td>
 									<td>
 										<div class="btn-group" role="group" aria-label="基本のボタングループ">
-											<a class="btn btn-primary" href="UserDetailServlet?id=${user.id}">詳細</a>
-                       <a class="btn btn-success" href="UserUpdateServlet?id=${user.id}">更新</a>
-                       <a class="btn btn-danger" href ="UserDeleteServlet?id=${user.id}">削除</a>
+											<a class="btn btn-primary" href="userdatadetail.html">詳細</a>
+											<a class="btn btn-success" href="userdataupdate.html">更新</a>
+											<a class="btn btn-danger" href="userdatadelete.html">削除</a>
 										</div>
 									</td>
 								</tr>
 								<tr>
-									<th scope="row">2</th>
-									<td>Jacob</td>
-									<td>Thornton</td>
-									<td></td>
+									<td scope="row" class="align-middle">saitama</td>
+									<td class="align-middle">埼玉県庁</td>
+									<td class="align-middle">埼玉県さいたま市浦和区高砂3-15-1</td>
+									<td>
+										<div class="btn-group" role="group" aria-label="基本のボタングループ">
+											<a class="btn btn-primary" href="#">詳細</a>
+											<a class="btn btn-success" href="#">更新</a>
+											<a class="btn btn-danger" href="#">削除</a>
+										</div>
+									</td>
 								</tr>
 							</tbody>
 						</table>
 					</div>
 
-					<div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
-						<p>プロフィールの文章です。...</p>
+					<div class="tab-pane fade" id="v-pills-item"
+						role="tabpanel" aria-labelledby="v-pills-item-tab">
+						<form>
+							<div class="form-row">
+								<div id="form-group col-lg-3">
+									<select class="custom-select">
+										<option selected>検索カテゴリ</option>
+										<option value="1">商品ID</option>
+										<option value="2">商品名</option>
+									</select>
+								</div>
+								<div class="form-group col-lg-7">
+									<input type="text" id="searchWords" class="form-control">
+								</div>
+								<div class="col-lg-2">
+									<button class="btn btn-primary btn-block" type="submit">検索</button>
+								</div>
+							</div>
+						</form>
+
+						<table class="table">
+							<thead>
+								<tr>
+									<th scope="col">商品ID</th>
+									<th scope="col">商品名</th>
+									<th scope="col">カテゴリ</th>
+									<th scope="col">単価</th>
+									<th scope="col">個数</th>
+									<th scope="col"></th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td scope="row" class="align-middle">1</td>
+									<td class="align-middle">アイスコーヒーブレンド</td>
+									<td class="align-middle">コーヒー豆</td>
+									<td class="align-middle">1080</td>
+									<td class="align-middle">10</td>
+									<td>
+										<div class="btn-group" role="group" aria-label="基本のボタングループ">
+											<a class="btn btn-primary" href="admin_itemdetail.html">詳細</a>
+											<a class="btn btn-success" href="admin_itemupdate.html">更新</a>
+											<a class="btn btn-danger" href="admin_itemdelete.html">削除</a>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td scope="row" class="align-middle">2</td>
+									<td class="align-middle">フレンチロースト</td>
+									<td class="align-middle">コーヒー豆</td>
+									<td class="align-middle">1050</td>
+									<td class="align-middle">4</td>
+									<td>
+										<div class="btn-group" role="group" aria-label="基本のボタングループ">
+											<a class="btn btn-primary" href="#">詳細</a>
+											<a class="btn btn-success" href="#">更新</a>
+											<a class="btn btn-danger" href="#">削除</a>
+										</div>
+									</td>
+								</tr>
+							</tbody>
+						</table>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-
 	<!-- /.container -->
 
     <!-- Footer -->

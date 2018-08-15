@@ -16,6 +16,9 @@
     <!-- Custom styles for this template -->
     <link href="css/shop-homepage.css" rel="stylesheet">
 
+    <!-- Custom styles Footer CSS -->
+    <link href="css/footer.css" rel="stylesheet">
+
 	<!-- Original CSS -->
     <link href="css/common.css" rel="stylesheet">
 </head>
@@ -29,29 +32,44 @@
 		</div>
 	</nav>
 
-	<div class="formdata">
-	<form>
-		<h1 class="h3 mb-3 font-weight-normal">サインイン</h1>
+	<!-- Page Content -->
+	<div class="container">
+		<div class="formdata">
+			<form>
+				<h1 class="h3 mb-3 font-weight-normal">サインイン</h1>
 
-		<div class="form-group row">
-			<label for="inputLoginId" class="col-sm-3 col-form-label">ログインID</label>
-			<div class="col-sm-9">
-				<input type="text" id="loginId" class="form-control" required autofocus>
-			</div>
+				<div class="form-group row">
+					<label for="inputLoginId" class="col-sm-3 col-form-label">ログインID</label>
+					<div class="col-sm-9">
+						<input type="text" id="loginId" class="form-control" required autofocus>
+					</div>
+				</div>
+
+				<div class="form-group row">
+					<label for="inputPassword" class="col-sm-3 col-form-label">パスワード</label>
+					<div class="col-sm-9">
+						<input type="password" id="password" class="form-control" required>
+					</div>
+				</div>
+
+				<button class="btn btn-lg btn-primary btn-block" type="submit">サインイン</button>
+				<hr>
+				<a href="register.html">アカウントを作成</a>
+			</form>
 		</div>
-
-		<div class="form-group row">
-			<label for="inputPassword" class="col-sm-3 col-form-label">パスワード</label>
-			<div class="col-sm-9">
-				<input type="password" id="password" class="form-control" required>
-			</div>
-		</div>
-
-		<button class="btn btn-lg btn-primary btn-block" type="submit">サインイン</button>
-		<hr>
-		<a href="register.html" >アカウントを作成</a>
-
-	</form>
 	</div>
+	<!-- /.container -->
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <span class="text-white">Copyright &copy; Your Website 2017</span>
+      </div>
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
 </body>
 </html>
