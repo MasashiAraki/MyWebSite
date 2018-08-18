@@ -1,0 +1,140 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>User Data</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="css/common/shop-homepage.css" rel="stylesheet">
+    <!-- Custom styles Footer CSS -->
+    <link href="css/common/footer.css" rel="stylesheet">
+   	<!-- Original CSS -->
+    <link href="css/common/common.css" rel="stylesheet">
+</head>
+
+<body>
+
+	<!-- Navigation -->
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <div class="container">
+        <a class="navbar-brand Bold text" href="index.html">Shop Name</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+			<div class="collapse navbar-collapse" id="navbarResponsive">
+				<ul class="navbar-nav ml-auto">
+
+					<!-- 管理画面はadminアカウントでサインインしている時だけ表示 -->
+					<li class="nav-item"><a class="nav-link" href="administrator.html">管理画面</a></li>
+					<li class="nav-item"><a class="nav-link" href="userdata.html">ユーザ名</a></li>
+					<li class="nav-item"><a class="nav-link" href="cart.html">カート</a></li>
+					<li class="nav-item">
+						<!-- サインイン時は「サインアウト」に表記が変わるようにする -->
+						<a class="nav-link" href="signin.html">サインイン</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+    </nav>
+
+	<!-- Page Content -->
+	<div class="container">
+		<div class="row mx-auto">
+			<h4 class="my-4 mx-auto font-weight-bold">ユーザ情報</h4>
+		</div>
+
+		<div class="card card-body col-lg-7 mx-auto">
+			<div class="row">
+				<div class="col-lg-3">
+					<small>ログインID</small>
+					<p>tokyo</p>
+				</div>
+				<div class="col-lg-9">
+					<small>名前</small>
+					<p>東京都庁</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-3">
+					<small>郵便番号</small>
+					<p>163-8001</p>
+				</div>
+				<div class="col-lg-9">
+					<small>住所</small>
+					<p>東京都新宿区西新宿２丁目８−１</p>
+				</div>
+			</div>
+			<div class="row">
+				<a href="userdataupdate.html" class="btn btn-secondary my-4 mx-auto">ユーザ情報を変更</a>
+			</div>
+		</div>
+
+		<div class="row mx-auto">
+			<h4 class="my-4 mx-auto font-weight-bold">購入履歴</h4>
+		</div>
+
+		<div class="row">
+			<table class="table table-hover text-center col-lg-9 mx-auto">
+				<thead>
+					<tr>
+						<th scope="col">購入日時</th>
+						<th scope="col">配送方法</th>
+						<th scope="col">合計金額</th>
+					</tr>
+				</thead>
+				<tbody>
+					<!-- リンクテスト -->
+					<tr data-href="buyhistorydetail.html">
+						<td>2018年08月13日06時38分</td>
+						<td>通常配送</td>
+						<td>2800円</td>
+					</tr>
+					<tr data-href="buyhistorydetail.html">
+						<td>2018年07月23日15時54分</td>
+						<td>お急ぎ便</td>
+						<td>10000円</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<!-- /.container -->
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <span class="text-white">Copyright &copy; My Website 2018</span>
+      </div>
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="jquery/jquery.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+
+	<!-- adding_link_column https://www.webantena.net/javascriptjquery/jquery-tr-data-href/ -->
+	<script>
+		jQuery(function($) {
+			$('tbody tr[data-href]').addClass('clickable').click(function() {
+				window.location = $(this).attr('data-href');
+			}).find('a').hover(function() {
+				$(this).parents('tr').unbind('click');
+			}, function() {
+				$(this).parents('tr').click(function() {
+					window.location = $(this).attr('data-href');
+				});
+			});
+		});
+	</script>
+</body>
+
+</html>
