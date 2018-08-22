@@ -13,6 +13,10 @@ public class BuyDetailDataBeans implements Serializable{
 	private int buyId;
 	private int itemId;
 
+	// コンストラクタ
+	public BuyDetailDataBeans() {
+	}
+
 	public int getId() {
 		return id;
 	}

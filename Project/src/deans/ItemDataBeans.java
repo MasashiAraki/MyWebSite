@@ -10,18 +10,34 @@ import java.io.Serializable;
 
 public class ItemDataBeans implements Serializable {
 	private int id;
+	private int price;
+	private int count;
 	private String name;
 	private String category;
 	private String detail;
-	private int price;
-	private int count;
 	private String fileName;
+
+	// コンストラクタ
+	public ItemDataBeans() {
+	}
 
 	public int getId() {
 		return id;
 	}
 	public void setId(int id) {
 		this.id = id;
+	}
+	public int getPrice() {
+		return price;
+	}
+	public void setPrice(int price) {
+		this.price = price;
+	}
+	public int getCount() {
+		return count;
+	}
+	public void setCount(int count) {
+		this.count = count;
 	}
 	public String getName() {
 		return name;
@@ -41,22 +57,11 @@ public class ItemDataBeans implements Serializable {
 	public void setDetail(String detail) {
 		this.detail = detail;
 	}
-	public int getPrice() {
-		return price;
-	}
-	public void setPrice(int price) {
-		this.price = price;
-	}
-	public int getCount() {
-		return count;
-	}
-	public void setCount(int count) {
-		this.count = count;
-	}
 	public String getFileName() {
 		return fileName;
 	}
 	public void setFileName(String fileName) {
 		this.fileName = fileName;
 	}
+
 }

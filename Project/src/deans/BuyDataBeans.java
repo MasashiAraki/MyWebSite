@@ -16,6 +16,10 @@ public class BuyDataBeans implements Serializable {
 	private int delivertMethodId;
 	private Date buyDate;
 
+	// コンストラクタ
+	public BuyDataBeans() {
+	}
+
 	public int getId() {
 		return id;
 	}

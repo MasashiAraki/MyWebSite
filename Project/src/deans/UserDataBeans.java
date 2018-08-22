@@ -11,12 +11,16 @@ import java.util.Date;
 
 public class UserDataBeans implements Serializable {
 	private int id;
-	private String name;
 	private int postcode;
+	private String name;
 	private String address;
 	private String loginId;
 	private String password;
 	private Date createDate;
+
+	// コンストラクタ
+	public UserDataBeans() {
+	}
 
 	public int getId() {
 		return id;
@@ -24,17 +28,17 @@ public class UserDataBeans implements Serializable {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
 	public int getPostcode() {
 		return postcode;
 	}
 	public void setPostcode(int postcode) {
 		this.postcode = postcode;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
 	}
 	public String getAddress() {
 		return address;
