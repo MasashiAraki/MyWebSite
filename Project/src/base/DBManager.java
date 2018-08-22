@@ -6,8 +6,7 @@ import java.sql.SQLException;
 
 public class DBManager {
 	final private static String URL = "jdbc:mysql://localhost/";
-	// DB_NAMEを修正する
-	final private static String DB_NAME = "userdetail?useUnicode=true&characterEncoding=utf8&serverTimezone=JST";
+	final private static String DB_NAME = "mywebsite?useUnicode=true&characterEncoding=utf8&serverTimezone=JST";
 	final private static String USER = "root";
 	final private static String PASS = "password";
 
