@@ -11,7 +11,7 @@
 	<meta name="description" content="">
 	<meta name="author" content="">
 
-	<title>Register Form</title>
+	<title>アカウント作成</title>
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -28,27 +28,28 @@
 	<!-- Navigation -->
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
 		<div class="container">
-			<a class="navbar-brand Bold text" href="index.html">Shop Name</a>
+			<a class="navbar-brand Bold text" href="Index">Coffee Specialty Shop</a>
 		</div>
 	</nav>
 
 	<!-- Page Content -->
 	<div class="container">
 		<div class="formdata">
-			<form>
-				<h1 class="h3 mb-3 font-weight-normal">アカウントを作成</h1>
+			<h3 class="mb-3 font-weight-normal">アカウントを作成</h3>
+			<h5 class="mb-3 text-danger font-weight-normal">${errorMessage }</h5>
 
+			<form action="Register" method="post">
 				<div class="form-group row">
 					<label for="inputName" class="col-sm-3 col-form-label">名前</label>
 					<div class="col-sm-9">
-						<input type="text" id="name" class="form-control" required autofocus>
+						<input type="text" value="${udb.name }" name="name" class="form-control" required autofocus>
 					</div>
 				</div>
 
 				<div class="form-group row">
 					<label for="inputPostcode" class="col-sm-3 col-form-label">郵便番号</label>
 					<div class="col-sm-9 text-left">
-						<input type="text" id="postCode" maxlength="8"
+						<input type="text" value="${udb.postcode }" name="postCode"  maxlength="8"
 							onKeyUp="AjaxZip3.zip2addr(this,'','addr11','addr11');">
 					</div>
 				</div>
@@ -56,7 +57,7 @@
 				<div class="form-group row">
 					<label for="inputAddress" class="col-sm-3 col-form-label">住所</label>
 					<div class="col-sm-9">
-						<input type="text" name="addr11" id="address" class="form-control"
+						<input type="text" value="${udb.address }" name="addr11" class="form-control"
 							required>
 					</div>
 				</div>
@@ -64,14 +65,14 @@
 				<div class="form-group row">
 					<label for="inputLoginId" class="col-sm-3 col-form-label">ログインID</label>
 					<div class="col-sm-9">
-						<input type="text" id="loginId" class="form-control" required>
+						<input type="text" name="loginId"   class="form-control" required>
 					</div>
 				</div>
 
 				<div class="form-group row">
 					<label for="inputPassword" class="col-sm-3 col-form-label">パスワード</label>
 					<div class="col-sm-9">
-						<input type="password" id="password" class="form-control" required>
+						<input type="password" name="password" class="form-control" required>
 					</div>
 				</div>
 
@@ -80,15 +81,15 @@
 						<br>（確認）
 					</label>
 					<div class="col-sm-9">
-						<input type="password" id="passwordConfirm" class="form-control" required>
+						<input type="password" name="confirmPassword" class="form-control" required>
 					</div>
 				</div>
 
 				<button class="btn btn-lg btn-primary btn-block" type="submit">アカウントを作成</button>
-				<hr>
-				<a href="index.html">戻る</a>
-
 			</form>
+
+			<hr>
+			<a href="Index">戻る</a>
 		</div>
 	</div>
 	<!-- /.container -->
@@ -96,7 +97,7 @@
     <!-- Footer -->
     <footer class="footer">
       <div class="container">
-        <span class="text-white">Copyright &copy; My Website 2018</span>
+        <span class="text-white">Copyright &copy; Coffee Specialty Shop</span>
       </div>
     </footer>
 
