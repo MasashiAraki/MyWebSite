@@ -11,7 +11,7 @@
 	<meta name="description" content="">
 	<meta name="author" content="">
 
-	<title>Signin Form</title>
+	<title>サインイン</title>
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -28,34 +28,36 @@
 	<!-- Navigation -->
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
 		<div class="container">
-			<a class="navbar-brand Bold text" href="index.html">Shop Name</a>
+			<a class="navbar-brand Bold text" href="Index">Coffee Specialty Shop</a>
 		</div>
 	</nav>
 
 	<!-- Page Content -->
 	<div class="container">
 		<div class="formdata">
-			<form>
-				<h1 class="h3 mb-3 font-weight-normal">サインイン</h1>
+			<h3 class="mb-3 font-weight-normal">サインイン</h3>
+			<h5 class="mb-3 text-danger font-weight-normal">${errorMessage }</h5>
 
+			<form action="Signin" method="post">
 				<div class="form-group row">
 					<label for="inputLoginId" class="col-sm-3 col-form-label">ログインID</label>
 					<div class="col-sm-9">
-						<input type="text" id="loginId" class="form-control" required autofocus>
+						<input type="text" name="loginId" class="form-control" required autofocus>
 					</div>
 				</div>
 
 				<div class="form-group row">
 					<label for="inputPassword" class="col-sm-3 col-form-label">パスワード</label>
 					<div class="col-sm-9">
-						<input type="password" id="password" class="form-control" required>
+						<input type="password" name="password" class="form-control" required>
 					</div>
 				</div>
 
 				<button class="btn btn-lg btn-primary btn-block" type="submit">サインイン</button>
-				<hr>
-				<a href="register.html">アカウントを作成</a>
 			</form>
+
+				<hr>
+				<a href="Register">アカウントを作成</a>
 		</div>
 	</div>
 	<!-- /.container -->
@@ -63,7 +65,7 @@
     <!-- Footer -->
     <footer class="footer">
       <div class="container">
-        <span class="text-white">Copyright &copy; My Website 2018</span>
+        <span class="text-white">Copyright &copy; Coffee Specialty Shop</span>
       </div>
     </footer>
 
