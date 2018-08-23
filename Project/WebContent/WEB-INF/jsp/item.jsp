@@ -11,7 +11,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Item</title>
+    <title>${item.name }</title>
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -28,7 +28,7 @@
 	<!-- Navigation -->
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
 		<div class="container">
-			<a class="navbar-brand Bold text" href="index.html">Shop Name</a>
+			<a class="navbar-brand Bold text" href="Index">Coffee Specialty Shop</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse"
 				data-target="#navbarResponsive" aria-controls="navbarResponsive"
 				aria-expanded="false" aria-label="Toggle navigation">
@@ -38,12 +38,19 @@
 				<ul class="navbar-nav ml-auto">
 
 					<!-- 管理画面はadminアカウントでサインインしている時だけ表示 -->
-					<li class="nav-item"><a class="nav-link" href="administrator.html">管理画面</a></li>
-					<li class="nav-item"><a class="nav-link" href="userdata.html">ユーザ名</a></li>
+					<li class="nav-item">
+						<c:if test="${udb_userInfo.loginId == 'admin' }">
+							<a class="nav-link" href="administrator.html">管理画面</a></c:if>
+					</li>
+					<li class="nav-item"><a class="nav-link" href="userdata.html">
+						<c:out value="${udb_userInfo.name }"></c:out> </a>
+					</li>
 					<li class="nav-item"><a class="nav-link" href="cart.html">カート</a></li>
 					<li class="nav-item">
-						<!-- サインイン時は「サインアウト」に表記が変わるようにする -->
-						<a class="nav-link" href="signin.html">サインイン</a>
+						<c:choose>
+							<c:when test="${udb_userInfo == null }"><a class="nav-link" href="Signin">サインイン</a></c:when>
+							<c:otherwise><a class="nav-link" href="Signout">サインアウト</a></c:otherwise>
+						</c:choose>
 					</li>
 				</ul>
 			</div>
@@ -56,6 +63,7 @@
 
 		<div class="row">
 			<div class="col-lg-3">
+			<!-- 未実装：検索機能 -->
 				<form action="itemsearchresult.html" >
 					<input class="form-control my-5" type="text" placeholder="商品を検索">
 				</form>
@@ -72,11 +80,11 @@
 
 				<div class="card mt-4">
 					<img class="card-img-top img-fluid"
-						src="img/coffee/kenya_king.jpg" alt="">
+						src="img/coffee/${item.fileName }" alt="">
 					<div class="card-body">
-						<h3 class="card-title">ケニヤ キング</h3>
-						<h4>1,230円</h4>
-						<p class="card-text">シトラスやマンゴーを思わせる印象的なアロマ、さらに完熟フルーツのような甘みと、明るくいきいきとした酸味が特徴です。</p>
+						<h3 class="card-title">${item.name }</h3>
+						<h4>${item.price }円</h4>
+						<p class="card-text">${item.detail }</p>
 						<form>
 							<div class="form-group">
 								<a class="btn btn-primary" href="cart.html">カートに追加</a>
@@ -96,7 +104,7 @@
     <!-- Footer -->
     <footer class="footer">
       <div class="container">
-        <span class="text-white">Copyright &copy; My Website 2018</span>
+        <span class="text-white">Copyright &copy; Coffee Specialty Shop</span>
       </div>
     </footer>
 
