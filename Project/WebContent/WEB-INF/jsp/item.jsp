@@ -40,12 +40,12 @@
 					<!-- 管理画面はadminアカウントでサインインしている時だけ表示 -->
 					<li class="nav-item">
 						<c:if test="${udb_userInfo.loginId == 'admin' }">
-							<a class="nav-link" href="administrator.html">管理画面</a></c:if>
+							<a class="nav-link" href="Administrator">管理画面</a></c:if>
 					</li>
-					<li class="nav-item"><a class="nav-link" href="userdata.html">
+					<li class="nav-item"><a class="nav-link" href="UserData">
 						<c:out value="${udb_userInfo.name }"></c:out> </a>
 					</li>
-					<li class="nav-item"><a class="nav-link" href="cart.html">カート</a></li>
+					<li class="nav-item"><a class="nav-link" href="Cart">カート</a></li>
 					<li class="nav-item">
 						<c:choose>
 							<c:when test="${udb_userInfo == null }"><a class="nav-link" href="Signin">サインイン</a></c:when>
@@ -85,9 +85,10 @@
 						<h3 class="card-title">${item.name }</h3>
 						<h4>${item.price }円</h4>
 						<p class="card-text">${item.detail }</p>
-						<form>
+						<form action="Cart" method="post">
 							<div class="form-group">
-								<a class="btn btn-primary" href="cart.html">カートに追加</a>
+								<input type="hidden" name="item_id" value="${item.id }">
+								<button type="submit" class="btn btn-primary">カートに追加</button>
 							</div>
 						</form>
 					</div>

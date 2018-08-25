@@ -10,7 +10,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>index</title>
+    <title>トップ</title>
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -27,7 +27,7 @@
 	<!-- Navigation -->
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
       <div class="container">
-        <a class="navbar-brand Bold text" href="index.html">Coffee Shop</a>
+		<a class="navbar-brand Bold text" href="Index">Coffee Specialty Shop</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -35,12 +35,19 @@
 				<ul class="navbar-nav ml-auto">
 
 					<!-- 管理画面はadminアカウントでサインインしている時だけ表示 -->
-					<li class="nav-item"><a class="nav-link" href="administrator.html">管理画面</a></li>
-					<li class="nav-item"><a class="nav-link" href="userdata.html">ユーザ名</a></li>
-					<li class="nav-item"><a class="nav-link" href="cart.html">カート</a></li>
 					<li class="nav-item">
-						<!-- サインイン時は「サインアウト」に表記が変わるようにする -->
-						<a class="nav-link" href="signin.html">サインイン</a>
+						<c:if test="${udb_userInfo.loginId == 'admin' }">
+							<a class="nav-link" href="Administrator">管理画面</a></c:if>
+					</li>
+					<li class="nav-item"><a class="nav-link" href="UserData">
+						<c:out value="${udb_userInfo.name }"></c:out> </a>
+					</li>
+					<li class="nav-item"><a class="nav-link" href="Cart">カート</a></li>
+					<li class="nav-item">
+						<c:choose>
+							<c:when test="${udb_userInfo == null }"><a class="nav-link" href="Signin">サインイン</a></c:when>
+							<c:otherwise><a class="nav-link" href="Signout">サインアウト</a></c:otherwise>
+						</c:choose>
 					</li>
 				</ul>
 			</div>
@@ -51,6 +58,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-3">
+				<!-- 未実装：検索機能 -->
 				<form action="itemsearchresult.html" >
 					<input class="form-control my-5" type="text" placeholder="商品を検索">
 				</form>
@@ -101,91 +109,21 @@
 
 				<!-- 商品をランダムに表示する -->
 				<div class="row">
-
-					<div class="col-lg-4 col-md-6 mt-4">
-						<div class="card h-100">
-							<a href="#"><img class="card-img-top"
-								src="img/coffee/kenya_king.jpg" alt=""></a>
-							<div class="card-body">
-								<h4 class="card-title">
-									<a href="item.html">ケニヤ キング</a>
-								</h4>
-								<h5>1,230円</h5>
-								<p class="card-text">シトラスやマンゴーを思わせる印象的なアロマ、さらに完熟フルーツのような甘みと、明るくいきいきとした酸味が特徴です。</p>
+					<c:forEach var="item" items="${itemList }">
+						<div class="col-lg-4 col-md-6 mt-4">
+							<div class="card h-100">
+								<img class="card-img-top" src="img/coffee/${item.fileName }"
+									alt="">
+								<div class="card-body">
+									<h4 class="card-title">
+										<a href="Item?item_id=${item.id }">${item.name }</a>
+									</h4>
+									<h5>${item.price }円</h5>
+									<p class="card-text">${item.detail }</p>
+								</div>
 							</div>
 						</div>
-					</div>
-
-					<div class="col-lg-4 col-md-6 mt-4">
-						<div class="card h-100">
-							<a href="#"><img class="card-img-top"
-								src="img/coffee/pike_place.jpg" alt=""></a>
-							<div class="card-body">
-								<h4 class="card-title">
-									<a href="item.html">パイクプレイス ロースト</a>
-								</h4>
-								<h5>1,140円</h5>
-								<p class="card-text">ココアや煎ったナッツのようなほのかな香ばしさに、バランスのとれたなめらかな口あたりが特徴のコーヒー。一日を通して、また毎日でもお楽しみいただけます。</p>
-							</div>
-						</div>
-					</div>
-
-					<div class="col-lg-4 col-md-6 mt-4">
-						<div class="card h-100">
-							<a href="#"><img class="card-img-top"
-								src="img/coffee/bird_friendly_blend.jpg" alt=""></a>
-							<div class="card-body">
-								<h4 class="card-title">
-									<a href="item.html">バードフレンドリー ブレンド</a>
-								</h4>
-								<h5>999円</h5>
-								<p class="card-text">渡り鳥が休息する森で生まれたバードフレンドリー(R)認証コーヒーのみでブレンドした柔らかな口あたりと甘い余韻が特徴のコーヒーです。</p>
-							</div>
-						</div>
-					</div>
-
-					<div class="col-lg-4 col-md-6 mt-4">
-						<div class="card h-100">
-							<a href="#"><img class="card-img-top"
-								src="img/coffee/iced_coffee_blend.jpg" alt=""></a>
-							<div class="card-body">
-								<h4 class="card-title">
-									<a href="item.html">アイスコーヒー ブレンド</a>
-								</h4>
-								<h5>1,080円</h5>
-								<p class="card-text">すっきりした苦みの中に、深いコクと甘みを感じるタリーズコーヒーのアイスコーヒーブレンド。ブラックでお召し上がりいただくと、豆そのものが持つ力強い風味をお楽しみいただけます。</p>
-							</div>
-						</div>
-					</div>
-
-					<div class="col-lg-4 col-md-6 mt-4">
-						<div class="card h-100">
-							<a href="#"><img class="card-img-top"
-								src="img/coffee/colombia.jpg" alt=""></a>
-							<div class="card-body">
-								<h4 class="card-title">
-									<a href="item.html">コロンビア</a>
-								</h4>
-								<h5>1,140円</h5>
-								<p class="card-text">ナッツを感じさせる風味が特徴のすっきりとしたバランスのとれたコーヒー。秘峰アンデス山脈の高地で栽培されたコーヒーです。</p>
-							</div>
-						</div>
-					</div>
-
-					<div class="col-lg-4 col-md-6 mt-4">
-						<div class="card h-100">
-							<a href="#"><img class="card-img-top"
-								src="img/coffee/decaf_ethiopia.jpg" alt=""></a>
-							<div class="card-body">
-								<h4 class="card-title">
-									<a href="item.html">デカフェ エチオピア</a>
-								</h4>
-								<h5>1,280円</h5>
-								<p class="card-text">エチオピアのコーヒー豆らしい、華やかな香りとフルーティーな味わいをお楽しみいただけます。滑らかな甘みが、心地よい余韻となって口の中に広がります。</p>
-							</div>
-						</div>
-					</div>
-
+					</c:forEach>
 				</div>
 				<!-- /.row -->
 
@@ -201,7 +139,7 @@
     <!-- Footer -->
     <footer class="footer">
       <div class="container">
-        <span class="text-white">Copyright &copy; My Website 2018</span>
+        <span class="text-white">Copyright &copy; Coffee Specialty Shop</span>
       </div>
     </footer>
 
