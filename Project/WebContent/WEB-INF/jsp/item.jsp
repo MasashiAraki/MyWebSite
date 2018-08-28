@@ -64,14 +64,14 @@
 		<div class="row">
 			<div class="col-lg-3">
 			<!-- 未実装：検索機能 -->
-				<form action="itemsearchresult.html" >
+				<form action="ItemSearchResult" >
 					<input class="form-control my-5" type="text" placeholder="商品を検索">
 				</form>
 
 				<div class="list-group">
-					<a href="item_coffee.html" class="list-group-item">コーヒー豆</a>
-					<a href="item_cuptumbler.html" class="list-group-item">マグ&タンブラー</a>
-					<a href="item_coffeeappliance.html" class="list-group-item">抽出器具</a>
+					<a href="Item_Coffee" class="list-group-item">コーヒー豆</a>
+					<a href="Item_Cuptumbler" class="list-group-item">マグ&タンブラー</a>
+					<a href="Item_Coffeeappliance" class="list-group-item">抽出器具</a>
 				</div>
 			</div>
 			<!-- /.col-lg-3 -->
@@ -85,7 +85,7 @@
 						<h3 class="card-title">${item.name }</h3>
 						<h4>${item.price }円</h4>
 						<p class="card-text">${item.detail }</p>
-						<form action="Cart" method="post">
+						<form action="ItemAdd" method="post">
 							<div class="form-group">
 								<input type="hidden" name="item_id" value="${item.id }">
 								<button type="submit" class="btn btn-primary">カートに追加</button>

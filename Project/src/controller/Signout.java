@@ -29,9 +29,9 @@ public class Signout extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
+		session.removeAttribute("isLogin");
 		session.removeAttribute("udb_userInfo");
-		System.out.println("ログインセッションを削除しました");
-
+		session.removeAttribute("cartItem");
 		response.sendRedirect("Index");
 	}
 

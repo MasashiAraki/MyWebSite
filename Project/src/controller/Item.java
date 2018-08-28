@@ -2,7 +2,6 @@ package controller;
 
 import java.io.IOException;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -37,8 +36,7 @@ public class Item extends HttpServlet {
     	ItemDataBeans item = ItemDAO.getItem(id);
     	request.setAttribute("item", item);
 
-		RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/jsp/item.jsp");
-		dispatcher.forward(request, response);
+		request.getRequestDispatcher("WEB-INF/jsp/item.jsp").forward(request, response);
 	}
 
 	/**

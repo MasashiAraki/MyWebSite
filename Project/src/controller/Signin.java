@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import base.Common;
 import dao.UserDAO;
 import deans.UserDataBeans;
 
@@ -32,8 +33,7 @@ public class Signin extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/jsp/signin.jsp");
-		dispatcher.forward(request, response);
+		request.getRequestDispatcher("WEB-INF/jsp/signin.jsp").forward(request, response);
 	}
 
 	/**
@@ -50,7 +50,9 @@ public class Signin extends HttpServlet {
 
 		if (udb != null) {
 			session.setAttribute("udb_userInfo", udb);
-			response.sendRedirect("Index");
+			session.setAttribute("isLogin", true);
+			String returnStrUrl = (String) Common.cutSessionAttribute(session, "returnStrUrl");
+			response.sendRedirect(returnStrUrl!=null?returnStrUrl:"Index");
 		} else {
 			request.setAttribute("errorMessage", "入力内容が正しくありません");
 			RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/jsp/signin.jsp");

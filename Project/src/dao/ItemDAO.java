@@ -14,9 +14,10 @@ import deans.ItemDataBeans;
 
 public class ItemDAO {
 
+
 	/**
-	 * 全てのアイテム情報
-	 * @return
+	 *  全ての商品情報を取得
+	 * @return itemList
 	 */
 	public static List<ItemDataBeans> getAllItem(){
 		Connection con = null;
@@ -26,7 +27,7 @@ public class ItemDAO {
 			con = DBManager.getConnection();
 			String sql = "SELECT * FROM m_item";
 
-			Statement stmt = (Statement) con.createStatement();
+			Statement stmt = con.createStatement();
 			ResultSet rs = stmt.executeQuery(sql);
 
 			while (rs.next()) {
@@ -59,7 +60,7 @@ public class ItemDAO {
 	/**
 	 * 商品IDに該当する商品情報を取得
 	 * @param id 商品ID
-	 * @return
+	 * @return idb
 	 */
 	public static ItemDataBeans getItem (int id) {
 		Connection con = null;
@@ -88,7 +89,6 @@ public class ItemDAO {
 				try {
 					con.close();
 				} catch (SQLException e) {
-					// TODO 自動生成された catch ブロック
 					e.printStackTrace();
 				}
 			}
