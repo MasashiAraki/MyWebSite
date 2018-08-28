@@ -10,7 +10,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Buy</title>
+    <title>購入</title>
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -26,84 +26,89 @@
 
 	<!-- Navigation -->
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-      <div class="container">
-        <a class="navbar-brand Bold text" href="index.html">Shop Name</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
+		<div class="container">
+			<a class="navbar-brand Bold text" href="Index">Coffee Specialty Shop</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse"
+				data-target="#navbarResponsive" aria-controls="navbarResponsive"
+				aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
 			<div class="collapse navbar-collapse" id="navbarResponsive">
 				<ul class="navbar-nav ml-auto">
 
 					<!-- 管理画面はadminアカウントでサインインしている時だけ表示 -->
-					<li class="nav-item"><a class="nav-link" href="administrator.html">管理画面</a></li>
-					<li class="nav-item"><a class="nav-link" href="userdata.html">ユーザ名</a></li>
-					<li class="nav-item"><a class="nav-link" href="cart.html">カート</a></li>
 					<li class="nav-item">
-						<!-- サインイン時は「サインアウト」に表記が変わるようにする -->
-						<a class="nav-link" href="signin.html">サインイン</a>
+						<c:if test="${udb_userInfo.loginId == 'admin' }">
+							<a class="nav-link" href="Administrator">管理画面</a></c:if>
+					</li>
+					<li class="nav-item"><a class="nav-link" href="UserData">
+						<c:out value="${udb_userInfo.name }"></c:out> </a>
+					</li>
+					<li class="nav-item"><a class="nav-link" href="Cart">カート</a></li>
+					<li class="nav-item">
+						<c:choose>
+							<c:when test="${udb_userInfo == null }"><a class="nav-link" href="Signin">サインイン</a></c:when>
+							<c:otherwise><a class="nav-link" href="Signout">サインアウト</a></c:otherwise>
+						</c:choose>
 					</li>
 				</ul>
 			</div>
 		</div>
-    </nav>
+	</nav>
 
 	<!-- Page Content -->
 	<div class="container">
-		<div class="row center">
-			<h4 class="my-4 mx-auto font-weight-bold">注文内容の確認</h4>
+		<div class="row">
+			<h4 class="my-4 mx-auto font-weight-bold">カートアイテム</h4>
 		</div>
 
-		<div class="row">
-			<div class="col-lg-9">
-				<table class="table">
-					<thead>
-						<tr class="text-center">
-							<th scope="col">商品名</th>
-							<th scope="col">価格</th>
-							<th scope="col">数量</th>
-						</tr>
-					</thead>
-					<!-- 表示テスト用 -->
-					<tbody>
-						<tr class="text-center">
-							<td>Echo Dot</td>
-							<td>5980円</td>
-							<td>1個</td>
-						</tr>
-						<tr class="text-center">
-							<td>Fire TV</td>
-							<td>8980円</td>
-							<td>1個</td>
-						</tr>
-						<tr class="text-center">
-							<td></td>
-							<td></td>
-							<td></td>
-						</tr>
-					</tbody>
+		<form action="BuyConfirm" method="post">
+			<div class="row">
+				<div class="col-lg-9">
+					<table class="table">
+						<thead>
+							<tr class="text-center">
+								<th scope="col">商品名</th>
+								<th scope="col">価格</th>
+								<th scope="col">数量</th>
+							</tr>
+						</thead>
+						<tbody>
+							<c:forEach var="item" items="${cartItem }">
+								<tr class="text-center">
+									<td>${item.name }</td>
+									<td>${item.price }円</td>
+									<!-- 未実装：個数の変更 -->
+									<td>1個</td>
+								</tr>
+							</c:forEach>
+						</tbody>
 
-				</table>
-			</div>
-
-			<div class="col-lg-3">
-				<div class="card text-center">
-					<div class="card-body">
-						<h4 class="card-title">合計：15460円</h4>
-						<p>商品の小計：14960円</p>
-						<p>送料：500円</p>
-						<a class="btn btn-primary" href="buycomplete.html" role="button">購入する</a>
-					</div>
+					</table>
 				</div>
 
+				<div class="col-lg-3">
+					<div class="card text-center">
+						<div class="card-body">
+							<h5 class="card-title">商品の小計<br>${totalPrice }円</h5>
+							<select name="delivery_method_id" class="custom-select my-3">
+								<c:forEach var="dmdb" items="${dmdbList }">
+									<option value="${dmdb.id }">${dmdb.name }：${dmdb.price }円</option>
+								</c:forEach>
+							</select>
+							<button type="submit" class="btn btn-primary">購入確認</button>
+						</div>
+					</div>
+				</div>
 			</div>
-		</div>
+		</form>
 	</div>
 	<!-- /.container -->
 
     <!-- Footer -->
     <footer class="footer">
       <div class="container">
-        <span class="text-white">Copyright &copy; My Website 2018</span>
+        <span class="text-white">Copyright &copy; Coffee Specialty Shop</span>
       </div>
     </footer>
 
