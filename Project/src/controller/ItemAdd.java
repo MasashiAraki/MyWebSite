@@ -11,8 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import beans.ItemDataBeans;
 import dao.ItemDAO;
-import deans.ItemDataBeans;
 
 /**
  * Servlet implementation class ItemAdd

@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import base.DBManager;
-import deans.DeliveryMethodDataBeans;
+import beans.DeliveryMethodDataBeans;
 
 public class DeliveryMethodDAO {
 
@@ -63,7 +63,7 @@ public class DeliveryMethodDAO {
 		try {
 			con = DBManager.getConnection();
 			st = con.prepareStatement(
-					"SELECT * FROM m_delivery_method WHERE id = ?");
+					"SELECT * FROM t_delivery_method WHERE id = ?");
 			st.setInt(1, DeliveryMethodId);
 
 			ResultSet rs = st.executeQuery();

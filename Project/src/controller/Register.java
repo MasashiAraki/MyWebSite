@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import beans.UserDataBeans;
 import dao.UserDAO;
-import deans.UserDataBeans;
 
 /**
  * Servlet implementation class Register

@@ -8,7 +8,7 @@ import java.sql.Timestamp;
 
 import base.Common;
 import base.DBManager;
-import deans.UserDataBeans;
+import beans.UserDataBeans;
 
 public class UserDAO {
 

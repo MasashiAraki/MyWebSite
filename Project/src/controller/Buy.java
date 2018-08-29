@@ -12,9 +12,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import base.Common;
+import beans.DeliveryMethodDataBeans;
+import beans.ItemDataBeans;
 import dao.DeliveryMethodDAO;
-import deans.DeliveryMethodDataBeans;
-import deans.ItemDataBeans;
 
 /**
  * Servlet implementation class Buy

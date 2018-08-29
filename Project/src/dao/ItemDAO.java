@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import base.DBManager;
-import deans.ItemDataBeans;
+import beans.ItemDataBeans;
 
 public class ItemDAO {
 

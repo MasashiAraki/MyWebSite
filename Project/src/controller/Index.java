@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import beans.ItemDataBeans;
 import dao.ItemDAO;
-import deans.ItemDataBeans;
 
 /**
  * Servlet implementation class Index

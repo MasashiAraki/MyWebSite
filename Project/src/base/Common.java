@@ -6,7 +6,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
-import deans.ItemDataBeans;
+import beans.ItemDataBeans;
 
 public class Common {
 
@@ -46,7 +46,7 @@ public class Common {
 	}
 
 	/**
-	 * ログイン前のページを取得
+	 *  セッションから指定データを取得（削除も一緒に行う）
 	 * @param session
 	 * @param str
 	 * @return
