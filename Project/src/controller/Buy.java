@@ -37,6 +37,7 @@ public class Buy extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 
+		try {
 		Boolean isLogin = session.getAttribute("isLogin") != null ? (Boolean) session.getAttribute("isLogin") : false;
 		List<ItemDataBeans> cartItem = (ArrayList<ItemDataBeans>) session.getAttribute("cartItem");
 
@@ -55,6 +56,12 @@ public class Buy extends HttpServlet {
 			request.setAttribute("dmdbList", dmdbList);
 			request.setAttribute("totalPrice", totalPrice);
 			request.getRequestDispatcher("WEB-INF/jsp/buy.jsp").forward(request, response);
+		}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			session.setAttribute("errorMessage", e.toString());
+			response.sendRedirect("Error");
 		}
 	}
 
