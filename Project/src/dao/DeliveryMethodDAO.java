@@ -16,8 +16,9 @@ public class DeliveryMethodDAO {
 	/**
 	 * 配送方法を全て取得
 	 * @return  DMList
+	 * @throws SQLException
 	 */
-	public static List<DeliveryMethodDataBeans> getAllDeliveryMethod(){
+	public static List<DeliveryMethodDataBeans> getAllDeliveryMethod() throws SQLException{
 		Connection con = null;
 		List<DeliveryMethodDataBeans> DMList = new ArrayList<DeliveryMethodDataBeans>();
 
@@ -38,16 +39,12 @@ public class DeliveryMethodDAO {
 			return DMList;
 		} catch (Exception e) {
 			e.printStackTrace();
+			throw new SQLException(e);
 		} finally {
 			if (con != null) {
-				try {
-					con.close();
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
+				con.close();
 			}
 		}
-		return null;
 	}
 
 
@@ -57,7 +54,7 @@ public class DeliveryMethodDAO {
 	 * @return
 	 * @throws SQLException
 	 */
-	public static DeliveryMethodDataBeans getDeliveryMethodDataBeansByID(int DeliveryMethodId) {
+	public static DeliveryMethodDataBeans getDeliveryMethodDataBeansByID(int DeliveryMethodId) throws SQLException {
 		Connection con = null;
 		PreparedStatement st = null;
 		try {
@@ -78,16 +75,12 @@ public class DeliveryMethodDAO {
 
 		} catch (SQLException e) {
 			e.printStackTrace();
+			throw new SQLException(e);
 		} finally {
 			if (con != null) {
-				try {
-					con.close();
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
+				con.close();
 			}
 		}
-		return null;
 	}
 
 }
