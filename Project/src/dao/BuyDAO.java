@@ -73,7 +73,7 @@ public class BuyDAO {
 			if (rs.next()) {
 				bdb.setId(rs.getInt("id"));
 				bdb.setTotalPrice(rs.getInt("total_price"));
-				bdb.setBuyDate(rs.getTimestamp("create_date"));
+				bdb.setBuyDate(rs.getTimestamp("buy_date"));
 				bdb.setDelivertMethodId(rs.getInt("delivery_method_id"));
 				bdb.setUserId(rs.getInt("user_id"));
 				bdb.setDeliveryMethodPrice(rs.getInt("price"));
