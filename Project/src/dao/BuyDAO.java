@@ -6,6 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
 
 import base.DBManager;
 import beans.BuyDataBeans;
@@ -49,9 +51,9 @@ public class BuyDAO {
 
 
 	/**
-	 * 購入IDによる購入情報検索
+	 * 購入IDをもとに購入情報検索
 	 * @param buyId
-	 * @return BuyDataBeans
+	 * @return BuyDataBeans buyIdに該当する購入情報と配送方法
 	 * @throws SQLException
 	 */
 	public static BuyDataBeans getBuyDataBeansByBuyId(int buyId) throws SQLException {
@@ -83,6 +85,51 @@ public class BuyDAO {
 
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
+			throw new SQLException(e);
+		} finally {
+			if (con != null) {
+				con.close();
+			}
+		}
+	}
+
+	/**
+	 * ユーザIDをもとに全ての購入情報を検索
+	 * @param userId
+	 * @return buyDetailList 全ての購入情報と配送方法のリスト
+	 * @throws SQLException
+	 */
+	public static List<BuyDataBeans> getBuyDataBeansListByUserId(int userId) throws SQLException {
+		Connection con = null;
+		PreparedStatement pStmt = null;
+		try {
+			con = DBManager.getConnection();
+
+			pStmt = con.prepareStatement(
+					"SELECT * FROM t_buy"
+							+ " JOIN t_delivery_method"
+							+ " ON t_buy.delivery_method_id = t_delivery_method.id"
+							+ " WHERE t_buy.user_id = ?"
+							+ " ORDER BY buy_date DESC");
+			pStmt.setInt(1, userId);
+
+			ResultSet rs = pStmt.executeQuery();
+			List<BuyDataBeans> buyDetailList = new ArrayList<BuyDataBeans>();
+
+			while (rs.next()) {
+				BuyDataBeans bdb = new BuyDataBeans();
+				bdb.setId(rs.getInt("id"));
+				bdb.setUserId(rs.getInt("user_id"));
+				bdb.setTotalPrice(rs.getInt("total_price"));
+				bdb.setDelivertMethodId(rs.getInt("delivery_method_id"));
+				bdb.setBuyDate(rs.getTimestamp("buy_date"));
+				bdb.setDeliveryMethodName(rs.getString("name"));
+				bdb.setDeliveryMethodPrice(rs.getInt("price"));
+				buyDetailList.add(bdb);
+			}
+			return buyDetailList;
+
+		} catch (SQLException e) {
 			throw new SQLException(e);
 		} finally {
 			if (con != null) {
