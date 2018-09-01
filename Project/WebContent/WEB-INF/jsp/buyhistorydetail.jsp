@@ -10,7 +10,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Buy History Detail</title>
+    <title>購入履歴詳細</title>
 
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 
@@ -28,26 +28,35 @@
 
 	<!-- Navigation -->
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-      <div class="container">
-        <a class="navbar-brand Bold text" href="index.html">Shop Name</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
+		<div class="container">
+			<a class="navbar-brand Bold text" href="Index">Coffee Specialty Shop</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse"
+				data-target="#navbarResponsive" aria-controls="navbarResponsive"
+				aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
 			<div class="collapse navbar-collapse" id="navbarResponsive">
 				<ul class="navbar-nav ml-auto">
 
 					<!-- 管理画面はadminアカウントでサインインしている時だけ表示 -->
-					<li class="nav-item"><a class="nav-link" href="#">管理画面</a></li>
-					<li class="nav-item"><a class="nav-link" href="userdata.html">ユーザ名</a></li>
-					<li class="nav-item"><a class="nav-link" href="cart.html">カート</a></li>
 					<li class="nav-item">
-						<!-- サインイン時は「サインアウト」に表記が変わるようにする -->
-						<a class="nav-link" href="signin.html">サインイン</a>
+						<c:if test="${udb_userInfo.loginId == 'admin' }">
+							<a class="nav-link" href="Administrator">管理画面</a></c:if>
+					</li>
+					<li class="nav-item"><a class="nav-link" href="UserData">
+						<c:out value="${udb_userInfo.name }"></c:out> </a>
+					</li>
+					<li class="nav-item"><a class="nav-link" href="Cart">カート</a></li>
+					<li class="nav-item">
+						<c:choose>
+							<c:when test="${udb_userInfo == null }"><a class="nav-link" href="Signin">サインイン</a></c:when>
+							<c:otherwise><a class="nav-link" href="Signout">サインアウト</a></c:otherwise>
+						</c:choose>
 					</li>
 				</ul>
 			</div>
 		</div>
-    </nav>
+	</nav>
 
 	<!-- Page Content -->
 	<div class="container">
@@ -66,11 +75,10 @@
 						</tr>
 					</thead>
 					<tbody>
-						<!-- リンクテスト -->
 						<tr>
-							<td>2018年08月13日06時38分</td>
-							<td>通常配送</td>
-							<td>2800円</td>
+							<td>${bdb.buyDate }</td>
+							<td>${bdb.deliveryMethodName }</td>
+							<td>${bdb.totalPrice + bdb.deliveryMethodPrice }円</td>
 						</tr>
 					</tbody>
 				</table>
@@ -86,11 +94,12 @@
 					</tr>
 				</thead>
 				<tbody>
-					<!-- リンクテスト -->
-					<tr>
-						<td>Echo Dot</td>
-						<td>5980円</td>
-					</tr>
+					<c:forEach var="item" items="${buyHistoryList }">
+						<tr>
+							<td>${item.name }</td>
+							<td>${item.price }円</td>
+						</tr>
+					</c:forEach>
 				</tbody>
 			</table>
 		</div>
