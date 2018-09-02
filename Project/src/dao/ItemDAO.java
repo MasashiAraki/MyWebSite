@@ -25,7 +25,8 @@ public class ItemDAO {
 
 		try {
 			con = DBManager.getConnection();
-			String sql = "SELECT * FROM m_item";
+			String sql =
+					"SELECT * FROM m_item JOIN m_item_category ON m_item.category_id = m_item_category.id";
 
 			Statement stmt = con.createStatement();
 			ResultSet rs = stmt.executeQuery(sql);
@@ -35,9 +36,10 @@ public class ItemDAO {
 				idb.setId(rs.getInt("id"));
 				idb.setPrice(rs.getInt("price"));
 				idb.setName(rs.getString("name"));
-				idb.setCategory(rs.getString("category"));
+				idb.setCategoryId(rs.getInt("category_id"));
 				idb.setDetail(rs.getString("detail"));
 				idb.setFileName(rs.getString("file_name"));
+				idb.setCategoryName(rs.getString("category_name"));
 				itemList.add(idb);
 			}
 		} catch (Exception e) {
@@ -66,7 +68,11 @@ public class ItemDAO {
 		PreparedStatement pStmt = null;
 		try {
 			con = DBManager.getConnection();
-			pStmt = con.prepareStatement("SELECT * FROM m_item WHERE id = ?");
+			pStmt = con.prepareStatement(
+					"SELECT * FROM m_item"
+							+ " JOIN m_item_category"
+							+ " ON m_item.category_id = m_item_category.id"
+							+ " WHERE m_item.id = ?");
 			pStmt.setInt(1, id);
 			ResultSet rs = pStmt.executeQuery();
 
@@ -75,9 +81,10 @@ public class ItemDAO {
 				idb.setId(rs.getInt("id"));
 				idb.setPrice(rs.getInt("price"));
 				idb.setName(rs.getString("name"));
-				idb.setCategory(rs.getString("category"));
+				idb.setCategoryId(rs.getInt("category_id"));
 				idb.setDetail(rs.getString("detail"));
 				idb.setFileName(rs.getString("file_name"));
+				idb.setCategoryName(rs.getString("category_name"));
 				return idb;
 			}
 		} catch (Exception e) {

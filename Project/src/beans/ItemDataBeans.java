@@ -11,10 +11,12 @@ import java.io.Serializable;
 public class ItemDataBeans implements Serializable {
 	private int id;
 	private int price;
+	private int categoryId;
 	private String name;
-	private String category;
 	private String detail;
 	private String fileName;
+
+	private String categoryName;
 
 	// コンストラクタ
 	public ItemDataBeans() {
@@ -38,11 +40,11 @@ public class ItemDataBeans implements Serializable {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getCategory() {
-		return category;
+	public int getCategoryId() {
+		return categoryId;
 	}
-	public void setCategory(String category) {
-		this.category = category;
+	public void setCategoryId(int categoryId) {
+		this.categoryId = categoryId;
 	}
 	public String getDetail() {
 		return detail;
@@ -55,6 +57,14 @@ public class ItemDataBeans implements Serializable {
 	}
 	public void setFileName(String fileName) {
 		this.fileName = fileName;
+	}
+
+	public String getCategoryName() {
+		return categoryName;
+	}
+
+	public void setCategoryName(String categoryName) {
+		this.categoryName = categoryName;
 	}
 
 }
