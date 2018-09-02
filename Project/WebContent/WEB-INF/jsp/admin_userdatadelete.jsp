@@ -88,7 +88,7 @@
 				<input type="hidden" name="id" value="${udd.id }">
 				<button class="btn btn-lg btn-danger btn-block mt-4" type="submit">削除</button>
 				<hr>
-				<a href="administrator.html">戻る</a>
+				<a href="Administrator">戻る</a>
 
 			</form>
 		</div>
