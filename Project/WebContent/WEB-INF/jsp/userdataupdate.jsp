@@ -80,7 +80,7 @@
 			<div class="form-group row">
 				<label for="address" class="col-sm-3 col-form-label">住所</label>
 				<div class="col-sm-9">
-					<input type="text" name="addr11" value="${udb_userInfo.address }" class="form-control"  required>
+					<input type="text" name="address" value="${udb_userInfo.address }" class="form-control"  required>
 				</div>
 			</div>
 
