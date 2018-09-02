@@ -34,7 +34,6 @@ public class ItemDAO {
 				ItemDataBeans idb = new ItemDataBeans();
 				idb.setId(rs.getInt("id"));
 				idb.setPrice(rs.getInt("price"));
-				idb.setCount(rs.getInt("count"));
 				idb.setName(rs.getString("name"));
 				idb.setCategory(rs.getString("category"));
 				idb.setDetail(rs.getString("detail"));
@@ -75,7 +74,6 @@ public class ItemDAO {
 				ItemDataBeans idb = new ItemDataBeans();
 				idb.setId(rs.getInt("id"));
 				idb.setPrice(rs.getInt("price"));
-				idb.setCount(rs.getInt("count"));
 				idb.setName(rs.getString("name"));
 				idb.setCategory(rs.getString("category"));
 				idb.setDetail(rs.getString("detail"));

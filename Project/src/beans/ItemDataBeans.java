@@ -11,7 +11,6 @@ import java.io.Serializable;
 public class ItemDataBeans implements Serializable {
 	private int id;
 	private int price;
-	private int count;
 	private String name;
 	private String category;
 	private String detail;
@@ -32,12 +31,6 @@ public class ItemDataBeans implements Serializable {
 	}
 	public void setPrice(int price) {
 		this.price = price;
-	}
-	public int getCount() {
-		return count;
-	}
-	public void setCount(int count) {
-		this.count = count;
 	}
 	public String getName() {
 		return name;

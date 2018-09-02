@@ -70,7 +70,6 @@
 							<tr class="text-center">
 								<th scope="col">商品名</th>
 								<th scope="col">価格</th>
-								<th scope="col">数量</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -78,8 +77,6 @@
 								<tr class="text-center">
 									<td>${item.name }</td>
 									<td>${item.price }円</td>
-									<!-- 未実装：個数の変更 -->
-									<td>1個</td>
 								</tr>
 							</c:forEach>
 						</tbody>

@@ -74,7 +74,6 @@
 							<tr class="text-center">
 								<th scope="col">商品名</th>
 								<th scope="col">価格</th>
-								<th scope="col">数量</th>
 								<th scope="col">削除</th>
 							</tr>
 						</thead>
@@ -83,8 +82,6 @@
 								<tr class="text-center">
 									<td>${item.name }</td>
 									<td>${item.price }円</td>
-									<!-- 未実装：個数の変更 -->
-									<td>1個</td>
 									<td><input type="checkbox" name="delete_item_id" value="${item.id }"></td>
 								</tr>
 							</c:forEach>
