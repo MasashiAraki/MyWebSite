@@ -53,7 +53,7 @@
 	<div class="container">
 		<div class="formdata">
 			<form>
-				<h1 class="h3 mb-3 font-weight-normal">商品の詳細</h1>
+				<h3 class="mb-3 font-weight-normal">商品の詳細</h3>
 
 				<div class="form-group row">
 					<div class="col-sm-12">

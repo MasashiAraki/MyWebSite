@@ -103,11 +103,11 @@
 				</thead>
 				<tbody>
 					<c:forEach var="item" items="${buyDataList }">
-					<tr data-href="BuyHistoryDetail?buy_id=${item.id }">
-						<td>${item.buyDate }</td>
-						<td>${item.deliveryMethodName }</td>
-						<td>${item.totalPrice + item.deliveryMethodPrice }円</td>
-					</tr>
+						<tr data-href="BuyHistoryDetail?buy_id=${item.id }">
+							<td>${item.buyDate }</td>
+							<td>${item.deliveryMethodName }</td>
+							<td>${item.totalPrice + item.deliveryMethodPrice }円</td>
+						</tr>
 					</c:forEach>
 				</tbody>
 			</table>

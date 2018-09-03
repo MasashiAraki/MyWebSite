@@ -40,9 +40,9 @@ public class BuyDetailDAO {
 	}
 
 	/**
-	 * 購入IDによる購入詳細情報検索
+	 * 購入IDをもとに全ての購入商品情報を検索
 	 * @param buyId
-	 * @return
+	 * @return buyDetailItemList
 	 * @throws SQLException
 	 */
 	public static List<ItemDataBeans> getItemDataBeansListByBuyId(int buyId) throws SQLException {

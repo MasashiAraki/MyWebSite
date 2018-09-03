@@ -66,7 +66,7 @@
 			<div class="form-group row">
 				<label for="postCode" class="col-sm-3 col-form-label">郵便番号</label>
 				<div class="col-sm-9 text-left">
-					<input type="text" name="postCode" value="${udd.postcode }" maxlength="8" onKeyUp="AjaxZip3.zip2addr(this,'','addr11','addr11');">
+					<input type="text" name="postCode" value="${udd.postcode }" maxlength="8" onKeyUp="AjaxZip3.zip2addr(this,'','addr11','addr11');" required>
 				</div>
 			</div>
 

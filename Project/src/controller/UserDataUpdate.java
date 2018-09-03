@@ -64,7 +64,7 @@ public class UserDataUpdate extends HttpServlet {
 				errorMessage = "入力されたパスワードと確認用パスワードが異なります<br>";
 			}
 
-			// 新規登録処理
+			// ユーザ情報更新処理
 			if (errorMessage.length() == 0) {
 				UserDAO.updateUser(inputUserInfo);
 				UserDataBeans udb = UserDAO.getUserInfo(loginId, inputPassword);
