@@ -10,7 +10,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Administrator</title>
+    <title>管理画面</title>
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -23,22 +23,27 @@
 </head>
 
 <body>
-
 	<!-- Navigation -->
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-      <div class="container">
-        <a class="navbar-brand Bold text" href="administrator.html">Shop Name【管理者】</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
+		<div class="container">
+			<a class="navbar-brand Bold text" href="Administrator">Coffee Specialty Shop</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse"
+				data-target="#navbarResponsive" aria-controls="navbarResponsive"
+				aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
 			<div class="collapse navbar-collapse" id="navbarResponsive">
 				<ul class="navbar-nav ml-auto">
 
-					<li class="nav-item"><a class="nav-link" href="index.html">一般に戻る</a>
-					<li class="nav-item"><a class="nav-link" href="userdata.html">ユーザ名</a></li>
+					<li class="nav-item"><a class="nav-link" href="Index">一般に戻る</a>
+					<li class="nav-item"><a class="nav-link" href="UserData">
+						<c:out value="${udb_userInfo.name }"></c:out> </a>
+					</li>
 					<li class="nav-item">
-						<!-- サインイン時は「サインアウト」に表記が変わるようにする -->
-						<a class="nav-link" href="signin.html">サインイン</a>
+						<c:choose>
+							<c:when test="${udb_userInfo == null }"><a class="nav-link" href="Signin">サインイン</a></c:when>
+							<c:otherwise><a class="nav-link" href="Signout">サインアウト</a></c:otherwise>
+						</c:choose>
 					</li>
 				</ul>
 			</div>
@@ -50,28 +55,27 @@
 		<div class="row mt-4">
 			<div class="col-2">
 				<div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-					<a class="nav-link active" id="v-pills-customer-tab" data-toggle="pill" href="#v-pills-customer" role="tab" aria-controls="v-pills-customer"aria-selected="true">顧客情報</a>
-					<a class="nav-link" id="v-pills-item-tab" data-toggle="pill" href="#v-pills-item" role="tab" aria-controls="v-pills-item" aria-selected="false">商品一覧</a>
+					<a class="nav-link  ${activeCheckUser }" id="v-pills-customer-tab" data-toggle="pill" href="#v-pills-customer" role="tab" aria-controls="v-pills-customer"aria-selected=true>顧客情報</a>
+					<a class="nav-link  ${activeCheckItem }" id="v-pills-item-tab" data-toggle="pill" href="#v-pills-item" role="tab" aria-controls="v-pills-item" aria-selected="false">商品一覧</a>
 				</div>
 				<hr>
-				<a class="btn btn-outline-primary" href="admin_additem.html" role="button">商品追加</a>
+				<a class="btn btn-outline-primary" href="Admin_ItemAdd" role="button">商品追加</a>
 			</div>
 
 			<div class="col-10">
 				<div class="tab-content" id="v-pills-tabContent">
 					<div class="tab-pane fade show active" id="v-pills-customer"
 						role="tabpanel" aria-labelledby="v-pills-customer-tab">
-						<form>
+						<form action="Admin_UserSearch" method="get">
 							<div class="form-row">
 								<div id="form-group col-lg-3">
-									<select class="custom-select">
-										<option selected>検索カテゴリ</option>
-										<option value="1">ログインID</option>
+									<select class="custom-select" name="searchUserCategoryId">
+										<option value="1" selected>ログインID</option>
 										<option value="2">ユーザ名</option>
 									</select>
 								</div>
 								<div class="form-group col-lg-7">
-									<input type="text" id="searchWords" class="form-control">
+									<input type="text" name="searchWord" class="form-control">
 								</div>
 								<div class="col-lg-2">
 									<button class="btn btn-primary btn-block" type="submit">検索</button>
@@ -89,47 +93,37 @@
 								</tr>
 							</thead>
 							<tbody>
-								<tr>
-									<td scope="row" class="align-middle">tokyo</td>
-									<td class="align-middle">東京都庁</td>
-									<td class="align-middle">東京都新宿区西新宿２丁目８−１</td>
-									<td>
-										<div class="btn-group" role="group" aria-label="基本のボタングループ">
-											<a class="btn btn-primary" href="admin_userdatadetail.html">詳細</a>
-											<a class="btn btn-success" href="admin_userdataupdate.html">更新</a>
-											<a class="btn btn-danger" href="admin_userdatadelete.html">削除</a>
-										</div>
-									</td>
-								</tr>
-								<tr>
-									<td scope="row" class="align-middle">saitama</td>
-									<td class="align-middle">埼玉県庁</td>
-									<td class="align-middle">埼玉県さいたま市浦和区高砂3-15-1</td>
-									<td>
-										<div class="btn-group" role="group" aria-label="基本のボタングループ">
-											<a class="btn btn-primary" href="#">詳細</a>
-											<a class="btn btn-success" href="#">更新</a>
-											<a class="btn btn-danger" href="#">削除</a>
-										</div>
-									</td>
-								</tr>
+								<c:forEach var="user" items="${userList }">
+								<c:if test="${user.loginId != 'admin' }">
+									<tr>
+										<td scope="row" class="align-middle">${user.loginId }</td>
+										<td class="align-middle">${user.name }</td>
+										<td class="align-middle">${user.address }</td>
+										<td>
+											<div class="btn-group" role="group" aria-label="基本のボタングループ">
+												<a class="btn btn-primary" href="Admin_UserDataDetail?user_id=${user.id }">詳細</a>
+												<a class="btn btn-success" href="Admin_UserDataUpdate?user_id=${user.id }">更新</a>
+												<a class="btn btn-danger" href="Admin_UserDataDelete?user_id=${user.id }">削除</a>
+											</div>
+										</td>
+									</tr>
+									</c:if>
+								</c:forEach>
 							</tbody>
 						</table>
 					</div>
 
 					<div class="tab-pane fade" id="v-pills-item"
 						role="tabpanel" aria-labelledby="v-pills-item-tab">
-						<form>
+						<form action="Admin_ItemSearch" method="get">
 							<div class="form-row">
 								<div id="form-group col-lg-3">
-									<select class="custom-select">
-										<option selected>検索カテゴリ</option>
-										<option value="1">商品ID</option>
-										<option value="2">商品名</option>
+									<select class="custom-select" name="searchItemCategoryId">
+										<option value="1">商品名</option>
 									</select>
 								</div>
 								<div class="form-group col-lg-7">
-									<input type="text" id="searchWords" class="form-control">
+									<input type="text" name="searchWord" class="form-control">
 								</div>
 								<div class="col-lg-2">
 									<button class="btn btn-primary btn-block" type="submit">検索</button>
@@ -144,39 +138,25 @@
 									<th scope="col">商品名</th>
 									<th scope="col">カテゴリ</th>
 									<th scope="col">単価</th>
-									<th scope="col">個数</th>
 									<th scope="col"></th>
 								</tr>
 							</thead>
 							<tbody>
-								<tr>
-									<td scope="row" class="align-middle">1</td>
-									<td class="align-middle">ケニヤ キング</td>
-									<td class="align-middle">コーヒー豆</td>
-									<td class="align-middle">1230</td>
-									<td class="align-middle">10</td>
-									<td>
-										<div class="btn-group" role="group" aria-label="基本のボタングループ">
-											<a class="btn btn-primary" href="admin_itemdetail.html">詳細</a>
-											<a class="btn btn-success" href="admin_itemupdate.html">更新</a>
-											<a class="btn btn-danger" href="admin_itemdelete.html">削除</a>
-										</div>
-									</td>
-								</tr>
-								<tr>
-									<td scope="row" class="align-middle">2</td>
-									<td class="align-middle">パイクプレイス ロースト</td>
-									<td class="align-middle">コーヒー豆</td>
-									<td class="align-middle">1140</td>
-									<td class="align-middle">4</td>
-									<td>
-										<div class="btn-group" role="group" aria-label="基本のボタングループ">
-											<a class="btn btn-primary" href="#">詳細</a>
-											<a class="btn btn-success" href="#">更新</a>
-											<a class="btn btn-danger" href="#">削除</a>
-										</div>
-									</td>
-								</tr>
+								<c:forEach var="item" items="${itemList }">
+									<tr>
+										<td scope="row" class="align-middle">${item.id }</td>
+										<td class="align-middle">${item.name }</td>
+										<td class="align-middle">${item.categoryName }</td>
+										<td class="align-middle">${item.price }円</td>
+										<td>
+											<div class="btn-group" role="group" aria-label="基本のボタングループ">
+												<a class="btn btn-primary" href="Admin_ItemDetail?item_id=${item.id }">詳細</a>
+												<a class="btn btn-success" href="Admin_ItemUpdate?item_id=${item.id }">更新</a>
+												<a class="btn btn-danger" href="Admin_ItemDelete?item_id=${item.id }">削除</a>
+											</div>
+										</td>
+									</tr>
+								</c:forEach>
 							</tbody>
 						</table>
 					</div>
