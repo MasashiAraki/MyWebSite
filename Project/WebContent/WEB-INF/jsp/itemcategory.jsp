@@ -58,8 +58,9 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-3">
-				<form action="ItemSearchResult" >
-					<input class="form-control my-5" type="text" placeholder="商品を検索">
+
+				<form action="ItemSearchResult" method="get" >
+					<input class="form-control my-5" type="text" name="searchWord" placeholder="商品を検索">
 				</form>
 
 				<!-- カテゴリを表示 -->

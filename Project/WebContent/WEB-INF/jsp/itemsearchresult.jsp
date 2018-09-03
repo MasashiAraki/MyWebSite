@@ -3,7 +3,6 @@
 
 <!DOCTYPE html>
 <html lang="ja">
-
 <head>
 
 	<meta charset="utf-8">
@@ -11,7 +10,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>ItemSearchResult</title>
+    <title>検索結果</title>
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -28,7 +27,7 @@
 	<!-- Navigation -->
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
       <div class="container">
-        <a class="navbar-brand Bold text" href="index.html">Shop Name</a>
+		<a class="navbar-brand Bold text" href="Index">Coffee Specialty Shop</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -36,12 +35,19 @@
 				<ul class="navbar-nav ml-auto">
 
 					<!-- 管理画面はadminアカウントでサインインしている時だけ表示 -->
-					<li class="nav-item"><a class="nav-link" href="#">管理画面</a></li>
-					<li class="nav-item"><a class="nav-link" href="#">ユーザ名</a></li>
-					<li class="nav-item"><a class="nav-link" href="#">カート</a></li>
 					<li class="nav-item">
-						<!-- サインイン時は「サインアウト」に表記が変わるようにする -->
-						<a class="nav-link" href="signin.html">サインイン</a>
+						<c:if test="${udb_userInfo.loginId == 'admin' }">
+							<a class="nav-link" href="Administrator">管理画面</a></c:if>
+					</li>
+					<li class="nav-item"><a class="nav-link" href="UserData">
+						<c:out value="${udb_userInfo.name }"></c:out> </a>
+					</li>
+					<li class="nav-item"><a class="nav-link" href="Cart">カート</a></li>
+					<li class="nav-item">
+						<c:choose>
+							<c:when test="${udb_userInfo == null }"><a class="nav-link" href="Signin">サインイン</a></c:when>
+							<c:otherwise><a class="nav-link" href="Signout">サインアウト</a></c:otherwise>
+						</c:choose>
 					</li>
 				</ul>
 			</div>
@@ -52,117 +58,37 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-3">
-				<form action="itemsearchresult.html" >
-					<input class="form-control my-5" type="text" placeholder="商品を検索">
+
+				<form action="ItemSearchResult" method="get" >
+					<input class="form-control my-5" type="text" name="searchWord" placeholder="商品を検索">
 				</form>
 
 				<div class="list-group">
-					<a href="item_coffee.html" class="list-group-item">コーヒー豆</a>
-					<a href="item_cuptumbler.html" class="list-group-item">マグ&タンブラー</a>
-					<a href="item_coffeeappliance.html" class="list-group-item">抽出器具</a>
+					<c:forEach var="icl" items="${icl }">
+						<a href="ItemCategory?category_id=${icl.id }" class="list-group-item">${icl.categoryName }</a>
+					</c:forEach>
 				</div>
 			</div>
 			<!-- /.col-lg-3 -->
 
 			<div class="col-lg-9">
-
 				<div class="row">
-
-					<div class="col-lg-4 col-md-6 mt-4">
-						<div class="card h-100">
-							<a href="#"><img class="card-img-top"
-								src="http://placehold.it/700x400" alt=""></a>
-							<div class="card-body">
-								<h4 class="card-title">
-									<a href="item.html">Item One</a>
-								</h4>
-								<h5>$24.99</h5>
-								<p class="card-text">Lorem ipsum dolor sit amet, consectetur
-									adipisicing elit. Amet numquam aspernatur!</p>
+					<c:forEach var="item" items="${itemSearchResult }">
+						<div class="col-lg-4 col-md-6 mt-4">
+							<div class="card h-100">
+								<img class="card-img-top" src="img/coffee/${item.fileName }"
+									alt="">
+								<div class="card-body">
+									<h4 class="card-title">
+										<a href="Item?item_id=${item.id }">${item.name }</a>
+									</h4>
+									<h5>${item.price }円</h5>
+									<p class="card-text">${item.detail }</p>
+								</div>
 							</div>
 						</div>
-					</div>
-
-					<div class="col-lg-4 col-md-6 mt-4">
-						<div class="card h-100">
-							<a href="#"><img class="card-img-top"
-								src="http://placehold.it/700x400" alt=""></a>
-							<div class="card-body">
-								<h4 class="card-title">
-									<a href="#">Item Two</a>
-								</h4>
-								<h5>$24.99</h5>
-								<p class="card-text">Lorem ipsum dolor sit amet, consectetur
-									adipisicing elit. Amet numquam aspernatur! Lorem ipsum dolor
-									sit amet.</p>
-							</div>
-						</div>
-					</div>
-
-					<div class="col-lg-4 col-md-6 mt-4">
-						<div class="card h-100">
-							<a href="#"><img class="card-img-top"
-								src="http://placehold.it/700x400" alt=""></a>
-							<div class="card-body">
-								<h4 class="card-title">
-									<a href="#">Item Three</a>
-								</h4>
-								<h5>$24.99</h5>
-								<p class="card-text">Lorem ipsum dolor sit amet, consectetur
-									adipisicing elit. Amet numquam aspernatur!</p>
-							</div>
-						</div>
-					</div>
-
-					<div class="col-lg-4 col-md-6 mt-4">
-						<div class="card h-100">
-							<a href="#"><img class="card-img-top"
-								src="http://placehold.it/700x400" alt=""></a>
-							<div class="card-body">
-								<h4 class="card-title">
-									<a href="#">Item Four</a>
-								</h4>
-								<h5>$24.99</h5>
-								<p class="card-text">Lorem ipsum dolor sit amet, consectetur
-									adipisicing elit. Amet numquam aspernatur!</p>
-							</div>
-						</div>
-					</div>
-
-					<div class="col-lg-4 col-md-6 mt-4">
-						<div class="card h-100">
-							<a href="#"><img class="card-img-top"
-								src="http://placehold.it/700x400" alt=""></a>
-							<div class="card-body">
-								<h4 class="card-title">
-									<a href="#">Item Five</a>
-								</h4>
-								<h5>$24.99</h5>
-								<p class="card-text">Lorem ipsum dolor sit amet, consectetur
-									adipisicing elit. Amet numquam aspernatur! Lorem ipsum dolor
-									sit amet.</p>
-							</div>
-						</div>
-					</div>
-
-					<div class="col-lg-4 col-md-6 mt-4">
-						<div class="card h-100">
-							<a href="#"><img class="card-img-top"
-								src="http://placehold.it/700x400" alt=""></a>
-							<div class="card-body">
-								<h4 class="card-title">
-									<a href="#">Item Six</a>
-								</h4>
-								<h5>$24.99</h5>
-								<p class="card-text">Lorem ipsum dolor sit amet, consectetur
-									adipisicing elit. Amet numquam aspernatur!</p>
-							</div>
-						</div>
-					</div>
-
+					</c:forEach>
 				</div>
-				<!-- /.row -->
-
 			</div>
 			<!-- /.col-lg-9 -->
 
