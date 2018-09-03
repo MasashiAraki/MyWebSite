@@ -53,7 +53,13 @@
 	<div class="container">
 		<div class="formdata">
 			<form action="Admin_ItemUpdate" method="post">
-				<h1 class="h3 mb-3 font-weight-normal">商品情報の変更</h1>
+				<h3 class="mb-3 font-weight-normal">商品情報の変更</h3>
+
+				<div class="form-group row">
+					<div class="col-sm-12">
+						<img class="card-img-top" src="img/coffee/${idd.fileName }" alt="">
+					</div>
+				</div>
 
 				<div class="form-group row">
 					<label for="itemId" class="col-sm-3 col-form-label">商品ID</label>
@@ -65,28 +71,32 @@
 				<div class="form-group row align-middle">
 					<label for="itemName" class="col-sm-3 col-form-label">商品名</label>
 					<div class="col-sm-9">
-						<input type="text" name="name" value="${idd.name }" class="form-control">
+						<input type="text" name="name" value="${idd.name }" class="form-control" required autofocus>
 					</div>
 				</div>
 
 				<div class="form-group row">
 					<label for="category" class="col-sm-3 col-form-label">カテゴリ</label>
 					<div class="col-sm-9">
-						<input type="text" name="category" value="${idd.categoryName }" class="form-control">
+						<select class="custom-select" name="categoryId" required>
+							<c:forEach var="category" items="${icl }">
+								<option value="${category.id }">${category.categoryName }</option>
+							</c:forEach>
+						</select>
 					</div>
 				</div>
 
 				<div class="form-group row">
 					<label for="price" class="col-sm-3 col-form-label">単価</label>
 					<div class="col-sm-9">
-						<input type="number" name="price" value="${idd.price }" min="1" class="form-control">
+						<input type="number" name="price" value="${idd.price }" min="1" class="form-control" required>
 					</div>
 				</div>
 
 				<div class="form-group row">
 					<label for="detail" class="col-sm-3 col-form-label">商品詳細</label>
 					<div class="col-sm-9">
-						<input type="text" name="value" value="${idd.detail }" class="form-control">
+						<input type="text" name="detail" value="${idd.detail }" class="form-control" required>
 					</div>
 				</div>
 
