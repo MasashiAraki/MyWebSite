@@ -62,18 +62,21 @@
 	<div class="container">
 
 		<div class="row">
+
 			<div class="col-lg-3">
 			<!-- 未実装：検索機能 -->
 				<form action="ItemSearchResult" >
 					<input class="form-control my-5" type="text" placeholder="商品を検索">
 				</form>
 
+				<!-- カテゴリを表示 -->
 				<div class="list-group">
-					<a href="Item_Coffee" class="list-group-item">コーヒー豆</a>
-					<a href="Item_Cuptumbler" class="list-group-item">マグ&タンブラー</a>
-					<a href="Item_Coffeeappliance" class="list-group-item">抽出器具</a>
+					<c:forEach var="icl" items="${icl }">
+						<a href="ItemCategory?category_id=${icl.id }" class="list-group-item">${icl.categoryName }</a>
+					</c:forEach>
 				</div>
 			</div>
+
 			<!-- /.col-lg-3 -->
 
 			<div class="col-lg-9">

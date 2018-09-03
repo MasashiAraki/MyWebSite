@@ -63,10 +63,11 @@
 					<input class="form-control my-5" type="text" placeholder="商品を検索">
 				</form>
 
+				<!-- カテゴリを表示 -->
 				<div class="list-group">
-					<a href="Item_Coffee" class="list-group-item">コーヒー豆</a>
-					<a href="Item_Cuptumbler" class="list-group-item">マグ&タンブラー</a>
-					<a href="Item_Coffeeppliance" class="list-group-item">抽出器具</a>
+					<c:forEach var="icl" items="${icl }">
+						<a href="ItemCategory?category_id=${icl.id }" class="list-group-item">${icl.categoryName }</a>
+					</c:forEach>
 				</div>
 			</div>
 			<!-- /.col-lg-3 -->
@@ -107,7 +108,6 @@
 					</a>
 				</div>
 
-				<!-- 商品をランダムに表示する -->
 				<div class="row">
 					<c:forEach var="item" items="${itemList }">
 						<div class="col-lg-4 col-md-6 mt-4">
