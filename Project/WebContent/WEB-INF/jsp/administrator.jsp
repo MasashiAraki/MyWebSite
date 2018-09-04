@@ -55,8 +55,8 @@
 		<div class="row mt-4">
 			<div class="col-2">
 				<div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-					<a class="nav-link  ${activeCheckUser }" id="v-pills-customer-tab" data-toggle="pill" href="#v-pills-customer" role="tab" aria-controls="v-pills-customer"aria-selected=true>顧客情報</a>
-					<a class="nav-link  ${activeCheckItem }" id="v-pills-item-tab" data-toggle="pill" href="#v-pills-item" role="tab" aria-controls="v-pills-item" aria-selected="false">商品一覧</a>
+					<a class="nav-link ${ isUserNavActive }" id="v-pills-customer-tab" data-toggle="pill" href="#v-pills-customer" role="tab" aria-controls="v-pills-customer"aria-selected=true>顧客情報</a>
+					<a class="nav-link ${ isItemNavActive }" id="v-pills-item-tab" data-toggle="pill" href="#v-pills-item" role="tab" aria-controls="v-pills-item" aria-selected="true">商品一覧</a>
 				</div>
 				<hr>
 				<a class="btn btn-outline-primary" href="Admin_ItemAdd" role="button">商品追加</a>
@@ -64,14 +64,14 @@
 
 			<div class="col-10">
 				<div class="tab-content" id="v-pills-tabContent">
-					<div class="tab-pane fade show active" id="v-pills-customer"
+					<div class="tab-pane fade ${ isUserTabActive }" id="v-pills-customer"
 						role="tabpanel" aria-labelledby="v-pills-customer-tab">
 						<form action="Admin_UserSearch" method="get">
 							<div class="form-row">
 								<div id="form-group col-lg-3">
 									<select class="custom-select" name="searchUserCategoryId">
-										<option value="1" selected>ログインID</option>
-										<option value="2">ユーザ名</option>
+										<option value="1" ${ isLoginIdActive }>ログインID</option>
+										<option value="2" ${ isNameActive }>ユーザ名</option>
 									</select>
 								</div>
 								<div class="form-group col-lg-7">
@@ -113,7 +113,7 @@
 						</table>
 					</div>
 
-					<div class="tab-pane fade" id="v-pills-item"
+					<div class="tab-pane fade ${ isItemTabActive }" id="v-pills-item"
 						role="tabpanel" aria-labelledby="v-pills-item-tab">
 						<form action="Admin_ItemSearch" method="get">
 							<div class="form-row">

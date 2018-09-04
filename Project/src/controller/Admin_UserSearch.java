@@ -9,7 +9,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import base.Common;
+import beans.ItemDataBeans;
 import beans.UserDataBeans;
+import dao.ItemDAO;
 import dao.UserDAO;
 
 /**
@@ -32,6 +35,7 @@ public class Admin_UserSearch extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
+			final int CATEGORY_IDENTIFICATION_NUMBER = 1;
 			int categoryId = Integer.parseInt(request.getParameter("searchUserCategoryId"));
 			String searchWord = request.getParameter("searchWord");
 
@@ -39,36 +43,28 @@ public class Admin_UserSearch extends HttpServlet {
 			case 1:
 				List<UserDataBeans> userList = UserDAO.searchUserByLoginId(searchWord);
 				request.setAttribute("userList", userList);
-				multipleRequest(request, response);
 				break;
 
 			case 2:
 				List<UserDataBeans> userList2 = UserDAO.searchUserByUserName(searchWord);
 				request.setAttribute("userList", userList2);
-				multipleRequest(request, response);
 				break;
 			}
+
+			Common.isWhereNavAndTabActive(CATEGORY_IDENTIFICATION_NUMBER, request);
+			Common.isWhereSearchCategoryActive(categoryId, request);
+
+			List<ItemDataBeans> itemList = ItemDAO.getAllItem();
+			request.setAttribute("itemList", itemList);
+
+			request.getRequestDispatcher("WEB-INF/jsp/administrator.jsp").forward(request, response);
+
+
 		} catch (Exception e) {
 			e.printStackTrace();
 			request.setAttribute("errorMessage", e.toString());
 			response.sendRedirect("Error");
 		}
-	}
-
-	/**
-	 * @param request
-	 * @param response
-	 * @throws ServletException
-	 * @throws IOException
-	 */
-	private void multipleRequest(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		String activeCheckUser = "active";
-		String activeCheckItem = "";
-
-		request.setAttribute("activeCheckUser", activeCheckUser);
-		request.setAttribute("activeCheckItem", activeCheckItem);
-		request.getRequestDispatcher("WEB-INF/jsp/administrator.jsp").forward(request, response);
 	}
 
 	/**

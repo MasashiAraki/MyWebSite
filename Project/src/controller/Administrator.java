@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import base.Common;
 import beans.ItemDataBeans;
 import beans.UserDataBeans;
 import dao.ItemDAO;
@@ -34,11 +35,8 @@ public class Administrator extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
-			String activeCheckUser = "active";
-			String activeCheckItem = "";
-
-			request.setAttribute("activeCheckUser", activeCheckUser);
-			request.setAttribute("activeCheckItem", activeCheckItem);
+			final int CATEGORY_IDENTIFICATION_NUMBER = 1;
+			Common.isWhereNavAndTabActive(CATEGORY_IDENTIFICATION_NUMBER, request);
 
 			List<UserDataBeans> userList = UserDAO.getAllUserInfo();
 			request.setAttribute("userList", userList);
