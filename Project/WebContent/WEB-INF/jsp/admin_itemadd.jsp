@@ -53,7 +53,7 @@
 	<!-- Page Content -->
 	<div class="container">
 		<div class="formdata">
-			<form action="Admin_ItemAdd" method="post">
+			<form action="Admin_ItemAdd" method="post" enctype="multipart/form-data">
 				<h3 class="mb-3 font-weight-normal">商品を追加</h3>
 
 				<div class="form-group row">
