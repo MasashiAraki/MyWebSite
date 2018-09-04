@@ -81,9 +81,9 @@
 
 			<div class="col-lg-9">
 
-				<div class="card mt-4">
-					<img class="card-img-top img-fluid"
-						src="img/${item.fileName }" alt="">
+				<div class="card mt-4 border-light item-card-width mx-auto">
+					<img class="card-img-top img-fluid "
+						src="img/${item.fileName }" alt="" >
 					<div class="card-body">
 						<h3 class="card-title">${item.name }</h3>
 						<h4>${item.price }円</h4>
