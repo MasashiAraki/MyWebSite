@@ -83,7 +83,7 @@
 
 				<div class="card mt-4">
 					<img class="card-img-top img-fluid"
-						src="img/coffee/${item.fileName }" alt="">
+						src="img/${item.fileName }" alt="">
 					<div class="card-body">
 						<h3 class="card-title">${item.name }</h3>
 						<h4>${item.price }円</h4>

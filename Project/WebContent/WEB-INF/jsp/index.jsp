@@ -112,7 +112,7 @@
 					<c:forEach var="item" items="${itemList }">
 						<div class="col-lg-4 col-md-6 mt-4">
 							<div class="card h-100">
-								<img class="card-img-top" src="img/coffee/${item.fileName }"
+								<img class="card-img-top" src="img/${item.fileName }"
 									alt="">
 								<div class="card-body">
 									<h4 class="card-title">

@@ -57,7 +57,7 @@
 
 				<div class="form-group row">
 					<div class="col-sm-12">
-						<img class="card-img-top" src="img/coffee/${idd.fileName }" alt="">
+						<img class="card-img-top" src="img/${idd.fileName }" alt="">
 					</div>
 				</div>
 
